@@ -29,6 +29,14 @@
     <header class="header">
       <div class="container">
         <h1>Library</h1>
+        <nav>
+          <div class="logged-out" id="loggedOut">
+            <button class="btn" id="logInBtn">Log In</button>
+          </div>
+          <div class="logged-in" id="loggedIn">
+            <button class="btn" id="logOutBtn">Log Out</button>
+          </div>
+        </nav>
       </div>
     </header>
     <main class="main">
@@ -71,5 +79,20 @@
       </form>
     </div>
     <div class="overlay" id="overlay"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCAP-9XVDmaWF9g0mwBkh-PRMm1QYj7F4s",
+        authDomain: "booklibrary-eb01e.firebaseapp.com",
+        projectId: "booklibrary-eb01e",
+        storageBucket: "booklibrary-eb01e.appspot.com",
+        messagingSenderId: "853422991258",
+        appId: "1:853422991258:web:b5beb631ec4c1b5c5ebc23",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>

@@ -48,6 +48,8 @@ const errorMsg = document.getElementById("errorMsg");
 const overlay = document.getElementById("overlay");
 const addBookForm = document.getElementById("addBookForm");
 const booksGrid = document.getElementById("booksGrid");
+const loggedIn = document.getElementById("loggedIn");
+const loggedOut = document.getElementById("loggedOut");
 
 const openAddBookModal = () => {
   addBookForm.reset();
@@ -190,4 +192,54 @@ const restoreLocal = () => {
   } else {
     library.books = [];
   }
+};
+
+const setupNavbar = (user) => {
+  if (user) {
+    loggedIn.classList.add("active");
+    loggedOut.classList.remove("active");
+  } else {
+    loggedIn.classList.remove("active");
+    loggedOut.classList.add("active");
+  }
+};
+
+//Auth
+
+const auth = firebase.auth();
+const logInBtn = document.getElementById("logInBtn");
+const logOutBtn = document.getElementById("logOutBtn");
+let unsubscribe;
+const setupRealTimeListener = () => {
+  unsubscribe = db
+    .collection("books")
+    .where("ownerId", "==", auth.currentUser.uid)
+    .orderBy("createdAt")
+    .onSnapshot((snapshot) => {
+      library.books = docsToBooks(snapshot.docs);
+      updateBooksGrid();
+    });
+};
+
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    setupRealTimeListener();
+  } else {
+    if (unsubscribe) unsubscribe();
+    restoreLocal();
+    updateBooksGrid();
+  }
+  setupNavbar(user);
+});
+
+const signIn = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider);
+};
+
+logInBtn.onclick = signIn;
+//logOutBtn.onclick = signOut;
+
+const JSONToBook = (book) => {
+  return new Book(book.title, book.author, book.pages, book.isRead);
 };

@@ -101,6 +101,13 @@
     align-items: center;
     justify-content: space-between;
   }
+  .logged-out,.logged-in{
+        display: none;
+    }
+  .logged-in.active , .logged-out.active {
+     display:flex;
+     gap: 20px;
+  }
   /* MAIN */
   
   .main {
