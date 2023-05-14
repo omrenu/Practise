@@ -1,0 +1,134 @@
+
+:root{
+
+  --font-color: #eee;
+  --border-color: #222;
+  --light-background: rgba(0, 0, 0, 0.6);
+  --dark-background: rgba(0, 0, 0, 0.9);
+}
+html {
+  font-size: 62.5%;
+  line-height: 1.6;
+}
+
+body {
+  font-size: 1.6rem;
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  color:var(--font-color);
+  font-family: "Montserrat", cursive;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+img {
+  width: 100%;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+
+}
+button{
+  font-family: inherit;
+  color:inherit;
+}
+
+/* HEADER */
+
+header {
+  background: var(--dark-background);
+  padding: 1rem;
+  width:100%;
+  border-bottom: 1px solid var(--border-color);
+}
+.header h1{
+  font-family: "Tangerine", cursive;
+  font-size: 12rem;
+  text-align: center;
+}
+
+.restaurant-name {
+  font-family: "Montserrat", cursive;
+  font-size: 12rem;
+}
+
+/*Nav*/
+.nav{
+  display:flex;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  font-size: 2rem;
+  padding: 2rem;
+  transition: 0.2s;
+  cursor: pointer;
+  transition: 0.3s;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+.button.active{
+  border-bottom: 2px solid var(--font-color);
+}
+
+.button:active{
+   border:none;
+}
+
+/* MAIN */
+
+.main{
+  width: 80%;
+  max-width:800px;
+  padding:8px;
+  margin: 3rem auto;
+  
+  font-size: 2rem;
+  background: var(--light-background);
+ 
+}
+.about p {
+  padding: 10px;
+}
+
+.about img{
+  width:50%;
+  opacity: 90%;
+}
+
+/* Menu */
+.menu{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10rem;
+  padding: 4rem;
+}
+
+
+/* FOOTER */
+.footer {
+  font-size: 3rem;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+/*Media Queries*/
+@media (max-width:500px){
+   html {
+     font-size:50%;
+   }
+}
+
